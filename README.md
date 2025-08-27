@@ -19,14 +19,9 @@ flowchart LR
 ⚙️ Tecnologias Utilizadas
 
 Python 3.10+
-
 Apache Airflow
-
 Apache Spark / PySpark
-
 Amazon S3
- ou MinIO
-
 Docker + Docker Compose
 
 📂 Estrutura do Repositório
