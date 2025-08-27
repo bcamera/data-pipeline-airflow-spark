@@ -1,11 +1,8 @@
-# 🚀 Data Pipeline com Airflow + Spark + S3
+🚀 Data Pipeline com Airflow + Spark + S3
+Este projeto demonstra a construção de um pipeline de dados moderno utilizando Apache Airflow para orquestração, Apache Spark (PySpark) para processamento distribuído e Amazon S3 (ou MinIO em ambiente local) como Data Lake. O objetivo é implementar um fluxo ETL (Extract, Transform, Load) completo, organizando os dados em camadas de um Data Lake (Raw → Refined → Curated).
 
-Este projeto demonstra a construção de um pipeline de dados moderno utilizando Apache **Airflow** para orquestração, Apache **Spark** (**PySpark**) para processamento distribuído e Amazon **S3** (ou MinIO em ambiente local) como Data Lake.
-O objetivo é implementar um fluxo **ETL (Extract, Transform, Load)** completo, organizando os dados em camadas de um Data Lake (Raw → Refined → Curated).
-
----
-
-### 📌 Arquitetura do Projeto
+📌 Arquitetura do Projeto
+Snippet de código
 
 flowchart LR
     A[API Pública / Dataset] -->|Extract| B[Airflow]
@@ -13,7 +10,6 @@ flowchart LR
     B -->|Trigger| D[Spark Job]
     D -->|Transform| E[S3 - Refined Layer]
     E -->|Aggregate & Clean| F[S3 - Curated Layer]
-
 ⚙️ Tecnologias Utilizadas
 Python 3.10+
 
@@ -38,7 +34,7 @@ Docker + Docker Compose
 1. Clonar o repositório
 Bash
 
-git clone [https://github.com/bcamera/data-pipeline-airflow-spark.git](https://github.com/bcamera/data-pipeline-airflow-spark.git)
+git clone https://github.com/bcamera/data-pipeline-airflow-spark.git
 cd data-pipeline-airflow-spark
 2. Subir os containers
 Bash
@@ -72,4 +68,5 @@ Adicionar monitoramento de falhas no Airflow.
 
 ✨ Autor
 👨‍💻 Bruno Camera
+
 💡 Analista de Banco de Dados em transição para Engenharia de Dados & IA
