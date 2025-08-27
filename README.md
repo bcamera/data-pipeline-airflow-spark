@@ -7,7 +7,6 @@ O objetivo é implementar um fluxo **ETL (Extract, Transform, Load)** completo, 
 
 ### 📌 Arquitetura do Projeto
 
-```mermaid
 flowchart LR
     A[API Pública / Dataset] -->|Extract| B[Airflow]
     B -->|Load Raw Data| C[S3 - Raw Layer]
