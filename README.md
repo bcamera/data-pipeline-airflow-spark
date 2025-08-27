@@ -8,13 +8,13 @@ Este projeto demonstra a construção de um pipeline de dados moderno utilizando
 
 ```mermaid
 flowchart LR
-    A[API Pública / Dataset] -->|Extract| B[Airflow]
-    B -->|Load Raw Data| C[S3 - Raw Layer]
-    B -->|Trigger| D[Spark Job]
-    D -->|Transform| E[S3 - Refined Layer]
-    E -->|Aggregate & Clean| F[S3 - Curated Layer]
------
-```mermaid
+    A[API Pública / Dataset] -->|Extract| B[Airflow]
+    B -->|Load Raw Data| C[S3 - Raw Layer]
+    B -->|Trigger| D[Spark Job]
+    D -->|Transform| E[S3 - Refined Layer]
+    E -->|Aggregate & Clean| F[S3 - Curated Layer]
+
+```
 
 ### ⚙️ Tecnologias Utilizadas
 
@@ -28,7 +28,7 @@ flowchart LR
 
 ### 📂 Estrutura do Repositório
 
-```
+
 📂 data-pipeline-airflow-spark
  ┣ 📂 dags              # DAGs do Airflow
  ┣ 📂 spark_jobs        # Scripts PySpark
