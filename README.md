@@ -1,7 +1,3 @@
-Perfeito\! O `README.md` é a primeira impressão do seu projeto. Vou formatar o texto que você me deu, organizando os títulos e subtítulos com Markdown para deixá-lo claro, profissional e fácil de ler no GitHub.
-
------
-
 # 🚀 Data Pipeline com Airflow + Spark + S3
 
 Este projeto demonstra a construção de um pipeline de dados moderno utilizando **Apache Airflow** para orquestração, **Apache Spark** (**PySpark**) para processamento distribuído e **Amazon S3** (ou MinIO em ambiente local) como Data Lake. O objetivo é implementar um fluxo **ETL (Extract, Transform, Load)** completo, organizando os dados em camadas de um Data Lake (Raw → Refined → Curated).
@@ -10,9 +6,15 @@ Este projeto demonstra a construção de um pipeline de dados moderno utilizando
 
 ### 📌 Arquitetura do Projeto
 
-*Seu diagrama Mermaid irá aqui. Lembre-se de inseri-lo em um bloco de código `mermaid` para que seja renderizado corretamente.*
-
+```mermaid
+flowchart LR
+    A[API Pública / Dataset] -->|Extract| B[Airflow]
+    B -->|Load Raw Data| C[S3 - Raw Layer]
+    B -->|Trigger| D[Spark Job]
+    D -->|Transform| E[S3 - Refined Layer]
+    E -->|Aggregate & Clean| F[S3 - Curated Layer]
 -----
+```mermaid
 
 ### ⚙️ Tecnologias Utilizadas
 
