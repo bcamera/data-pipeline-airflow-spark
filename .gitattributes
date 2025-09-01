@@ -1,0 +1,4 @@
+# Força LF para arquivos de shell e Python
+*.sh text eol=lf
+*.py text eol=lf
+requirements.txt text eol=lf
