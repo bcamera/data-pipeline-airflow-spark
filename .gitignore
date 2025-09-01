@@ -1,0 +1,68 @@
+# ========================
+# Python
+# ========================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.swp
+*.sqlite3
+*.egg-info/
+
+# ========================
+# Airflow
+# ========================
+# Banco local e arquivos temporários
+airflow.db
+*.log
+*.pid
+*.pickle
+/tmp/
+.dags/*.pyc
+
+# Apenas versionar os DAGs, não os outros arquivos temporários
+# Se você tiver subpastas de DAGs, ajuste conforme necessário
+dags/__pycache__/
+dags/*.pyc
+
+# ========================
+# Docker
+# ========================
+# Arquivos sensíveis ou override de configuração
+*.env
+docker-compose.override.yml
+docker-compose.override.yaml
+docker-compose.local.yml
+docker-compose.local.yaml
+
+# Volumes locais que armazenam dados
+postgres-db-volume/
+minio-data/
+spark-data/
+
+# ========================
+# Spark
+# ========================
+# Logs e arquivos temporários do Spark
+spark/logs/
+spark/work/
+
+# ========================
+# IDEs / Sistema
+# ========================
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# ========================
+# Jupyter / Notebooks
+# ========================
+.ipynb_checkpoints/
+
+# ========================
+# Logs e temporários gerais
+# ========================
+*.log
+*.tmp
+*.bak
