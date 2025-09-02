@@ -51,6 +51,16 @@ def load_to_s3():
         aws_access_key_id="minio",          # Usuário
         aws_secret_access_key="minio123"    # Senha
     )
+
+    # Lista de buckets que vamos usar
+    buckets = ["raw", "curated"]
+    
+    # Criar buckets caso não existam
+    for bucket in buckets:
+        try:
+            s3.head_bucket(Bucket=bucket)
+        except:
+            s3.create_bucket(Bucket=bucket)
     
     # Mesma lista de tickers
     tickers = ["PETR4.SA", "VALE3.SA", "ITUB4.SA", "^BVSP", "BTC-USD"]
@@ -80,9 +90,14 @@ def transform_finance_data():
     for ticker in tickers:
         # Lê CSV temporário
         df = pd.read_csv(f"/tmp/{ticker.replace('^','')}.csv")
+
+        # Converte para float, valores inválidos viram NaN
+        df["Close"] = pd.to_numeric(df["Close"], errors="coerce")
+        df = df.dropna(subset=["Close"])
         
         # Calcula o retorno diário percentual
         df["Return"] = df["Close"].pct_change()
+        df["Return"].fillna(0, inplace=True)  # substitui NaN por 0
         
         # Calcula média móvel de 7 dias
         df["MA7"] = df["Close"].rolling(window=7).mean()
@@ -91,7 +106,7 @@ def transform_finance_data():
         df["MA30"] = df["Close"].rolling(window=30).mean()
         
         # Calcula volatilidade de 30 dias (desvio padrão do retorno)
-        df["Volatility"] = df["Return"].rolling(window=30).std()
+        df["Volatility"] = df["Return"].rolling(window=30).std().fillna(0)
         
         # Nome do arquivo transformado
         file_curated = f"/tmp/{ticker.replace('^','')}_curated.csv"
